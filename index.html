@@ -1,0 +1,104 @@
+<!doctype html>
+<html lang="en">
+<head>
+  <meta charset="utf-8">
+  <meta name="viewport" content="width=device-width, initial-scale=1, viewport-fit=cover">
+  <title>Fairway Fiend • Quick</title>
+  <meta name="theme-color" content="#0a7a3f">
+  <link rel="manifest" href="manifest.json">
+  <link rel="apple-touch-icon" href="assets/icon-192.png">
+  <link rel="stylesheet" href="styles.css">
+</head>
+<body>
+<header class="appbar">
+  <div class="title">Fairway Fiend • Quick</div>
+  <nav class="tabs" role="tablist">
+    <button class="tab active" data-tab="play" aria-selected="true">Play</button>
+    <button class="tab" data-tab="rounds">Rounds</button>
+    <button class="tab" data-tab="stats">Stats</button>
+    <button class="tab" data-tab="gear">Gear</button>
+  </nav>
+</header>
+
+<main>
+<section id="tab-play" class="tabview active" role="tabpanel" aria-label="Play">
+  <div class="card">
+    <h2>Start Round</h2>
+    <form id="start-form">
+      <label>Course name
+        <input type="text" id="courseName" placeholder="Temporary Course" required>
+      </label>
+      <label>Tees
+        <input type="text" id="teeName" placeholder="Blue">
+      </label>
+      <div class="row">
+        <label>Walking
+          <input type="checkbox" id="walking" checked>
+        </label>
+        <label>Date
+          <input type="date" id="roundDate">
+        </label>
+      </div>
+      <button type="submit" class="primary">Go</button>
+    </form>
+  </div>
+
+  <div id="round-area" class="card hidden">
+    <div id="gps-banner" class="gps">
+      <div><strong>GPS</strong> <span id="gps-status">—</span></div>
+      <div class="muted small" id="gps-accuracy"></div>
+    </div>
+    <h2 id="round-title">Course • Tees</h2>
+    <div class="holes"></div>
+    <div class="summary quick">
+      <div><strong>Total</strong> <span id="sum-strokes">0</span> strokes</div>
+      <div><strong>Putts</strong> <span id="sum-putts">0</span></div>
+      <div><strong>Penalties</strong> <span id="sum-pen">0</span></div>
+      <div><strong>FIR</strong> <span id="sum-fir">0</span></div>
+      <div><strong>GIR</strong> <span id="sum-gir">0</span></div>
+    </div>
+    <div class="row actions">
+      <button id="finishRound" class="primary">Finish Round</button>
+      <button id="resetRound" class="ghost">Reset</button>
+    </div>
+  </div>
+</section>
+
+<section id="tab-rounds" class="tabview" role="tabpanel" aria-label="Rounds">
+  <div class="card">
+    <div class="row between">
+      <h2>Rounds</h2>
+      <button id="exportCsv" class="ghost">Export CSV</button>
+    </div>
+    <ul id="roundList" class="list"></ul>
+  </div>
+</section>
+
+<section id="tab-stats" class="tabview" role="tabpanel" aria-label="Stats">
+  <div class="card">
+    <h2>Stats (simple)</h2>
+    <div class="stats-grid">
+      <div class="kv"><span>Rounds</span><strong id="stat-rounds">0</strong></div>
+      <div class="kv"><span>Avg Score</span><strong id="stat-avg-score">—</strong></div>
+      <div class="kv"><span>Avg Putts</span><strong id="stat-avg-putts">—</strong></div>
+      <div class="kv"><span>GIR / rnd</span><strong id="stat-avg-gir">—</strong></div>
+      <div class="kv"><span>FIR hits / rnd</span><strong id="stat-avg-fir">—</strong></div>
+    </div>
+  </div>
+</section>
+
+<section id="tab-gear" class="tabview" role="tabpanel" aria-label="Gear">
+  <div class="card">
+    <h2>Gear</h2>
+    <p>Coming later. For now, focus on not snap-hooking the opening tee shot.</p>
+    <p class="muted">Data is stored locally on your device (localStorage). Use Export CSV to back up.</p>
+    <button id="installBtn" class="primary hidden">Install App</button>
+  </div>
+</section>
+</main>
+
+<footer class="footer">Offline-ready • No accounts • Your data stays in your pocket</footer>
+
+<script src="app.js"></script>
+</body>
+</html>
